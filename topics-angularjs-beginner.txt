@@ -1,0 +1,57 @@
+Topice for Angular JS session
+
+1) What's AngularJS ?
+	- done in sheet
+
+2) Why AngularJS ?
+	- done in sheet
+
+3) What does an Angular look like? Explanation ...
+	- need to edit in sheet
+
+4) AngularJS architecture (MVC)
+	- done in sheet
+
+5) Directives, Filters and Data Binding.
+	- need to update in sheet with practical
+--------------------------------------------------------------------------
+6) Simple Angular App used in any project.
+	- Prepare structure of app
+	- how to write each file 
+
+7) Routing (ng-route)
+	- adding ng-route in code
+	- adding template
+	- adding resolve 
+
+8) Service and Factory 
+	- defining service and factory.
+	- using service and factory in controller.
+
+9) Integrating backend WS with http using service and factory
+	- http service and using in service and factory
+	- integrating backend in UI
+
+
+Practical Example 
+1) Simple two way binding
+2) Example with ng-repeat, ng-init without contoller (Directives)
+3) Simple app with controller
+4) scope within Controller 
+5) ng-route example
+6) factory
+7) Integrating simple http service in factory
+
+Task for competition ...
+Prepare CRUD for users using Angular JS which will involves 
+- listings of users with pagination
+- adding new user with popup
+- delete user with confirmation warning
+- update user with popup
+- form validation using Angular JS (no jQuery and javascript)
+- http service
+Backend for WS you can manage in any language of choices ...
+Database model for user profile would contain atleast more than 6 standard fields.
+
+Note : Evalution is based on maximum use of Angular JS directives (default as well as custom), bootstrap for styling and time of completion for project ...
+

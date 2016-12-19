@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<body>
+    <div ng-app="myApp" ng-controller="MyCtrl">
+        <!-- ----------------------------- -->
+        <div style="margin-left: 50px;">
+            <p><a href="#/" class="btn btn-info btn-sm" role="button">Main</a></p>
+            <a href="#red" class="btn btn-info btn-sm" role="button" style="color:red;">Red</a>
+            <a href="#green" class="btn btn-info btn-sm" role="button" style="color:green;">Green</a>
+            <a href="#blue" class="btn btn-info btn-sm" role="button" style="color:blue;">Blue</a>
+            <div ng-view></div>
+        </div>
+        <!-- ----------------------------- -->
+        <br>
+        <div class="form-group" style="margin-left: 50px; width : 500px">
+            <label for="fname">First Name : </label>
+            <input type="text" class="form-control" id="fname" ng-model="firstName">
+        </div>
+        <div class="form-group" style="margin-left: 50px; width : 500px">
+            <label for="lname">Last Name: </label>
+            <input type="text" class="form-control" id="lname" ng-model="lastName">
+        </div>
+        <br>
+        <h2 style="margin-left: 50px;">Full Name: {{firstName + " " + lastName}}</h2>
+        <!-- ------------------------------------------------------------------------------ -->
+        <div ng-init="friends = [{name:'John', age:25}, {name:'Mary', age:28}]" style="margin-left: 50px;">
+            I have {{friends.length}} friends. They are:
+            <ul>
+                <li ng-repeat="friend in friends">
+                    [{{$index + 1}}] {{friend.name}} who is {{friend.age}} years old.
+                </li>
+            </ul>
+        </div>
+        <h4 style="margin-left: 50px;">{{message}}</h4>
+        <!-- ------------------------------------------------------------------------------ -->
+        <br>
+        <div class="form-group" style="margin-left: 50px; width : 500px">
+            <label for="">Input Number: </label>
+            <input type="text" class="form-control" id="" ng-model="num" >
+        </div>
+        <div>
+        </div>
+        <div style="margin-left: 50px; ">
+        <button type="button" class="btn btn-default" ng-click="sqrt(num)">Click to see Square of number</button>
+        <p>Result is {{result}}</p>
+        </div>
+    </div>
+    <script>
+    var app = angular.module('myApp', ["ngRoute"]);
+    // --------------------------------------
+    app.config(function($routeProvider) {
+        $routeProvider
+            .when("/", {
+                templateUrl: "partialViews/main.html",
+                controller: "mainCtrl"
+            })
+            .when("/red", {
+                templateUrl: "partialViews/red.html",
+                controller: "redCtrl"
+            })
+            .when("/green", {
+                templateUrl: "partialViews/green.html",
+                controller: "greenCtrl"
+            })
+            .when("/blue", {
+                templateUrl: "partialViews/blue.html",
+              	controller: "blueCtrl"  
+            });
+    });
+    // --------------------------------------
+    app.factory('MyFactory', function() {
+        var MyFactory = {};
+        MyFactory.sqrtOf = function(x){
+            return x * x ;
+        }; 
+        return MyFactory;
+    });
+    // --------------------------------------
+    app.controller('MyCtrl', ['$scope', 'MyFactory', function($scope, MyFactory) {
+        $scope.firstName = "Keyur";
+        $scope.lastName = "Rathod";
+        $scope.message = "This is message from controller.";
+        $scope.sqrt = function(){
+            $scope.result = MyFactory.sqrtOf($scope.num);
+        }
+    }]);
+
+    app.controller('mainCtrl', ['$scope', function($scope) {
+        $scope.message = "This is main controller";
+    }]);
+    app.controller('redCtrl', ['$scope', function($scope) {
+        $scope.message = "This is red controller";
+    }]);
+    app.controller('greenCtrl', ['$scope', function($scope) {
+        $scope.message = "This is green controller";
+    }]);
+    app.controller('blueCtrl', ['$scope', function($scope) {
+        $scope.message = "This is blue controller";
+    }]);
+    // --------------------------------------
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,11 @@
+<h1>Main</h1>
+<p>{{message}}</p>
+<div class="container">
+    <h1>Filters from Backend</h1>
+    <ul class="list-group">
+        <li class="list-group-item" ng-repeat="f in filters track by $index">
+        	<a href="#/edit/{{f._id}}" class="btn btn-info btn-xs" role="button">Edit</a>
+        	{{$index+1}}. {{f.filter_name | uppercase}}
+        </li>      
+    </ul>
+</div>
